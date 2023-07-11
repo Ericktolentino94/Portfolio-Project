@@ -13,6 +13,10 @@ window.addEventListener("DOMContentLoaded" , function getData () {
         <p><strong>Birth Year: </strong>${json.results[i].birth_year}</p>
         <p><strong>Hair Color: </strong>${json.results[i].hair_color}</P>
         <button>Character Home Planet</button>`
+        const planetButton = document.querySelector("button")
+        planetButton.addEventListener("click", function() {
+            window.location.href = "./planet.html";
+        })
         }
     })
     .catch(error => {
