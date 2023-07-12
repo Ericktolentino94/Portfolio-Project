@@ -2,16 +2,13 @@ const url = "http://swapi.dev/api/people?page=2";
 const section = document.querySelector("section");
 const searchInput = document.querySelector("#searchInput");
 const searchButton = document.querySelector("#searchButton");
-const form = document.querySelector('form');
-
-
-
+const form = document.querySelector("form");
 
 window.addEventListener("DOMContentLoaded", function getData() {
   fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
+    .then((response) => response.json())
+    .then((data) => {
+      
 
       for (let i = 0; i < data.results.length; i++) {
         section.innerHTML += `
@@ -25,35 +22,38 @@ window.addEventListener("DOMContentLoaded", function getData() {
       }
 
       const planetButtons = document.querySelectorAll(".characterButton");
-      planetButtons.forEach(button => {
+      planetButtons.forEach((button) => {
         button.addEventListener("click", handlePlanetButtonClick);
       });
     })
-    .catch(error => {
+    .catch((error) => {
       console.error("Error:", error);
     });
 });
 
 function handlePlanetButtonClick(event) {
   const homeworld = event.target.value;
-  const planetURL = `./planets/planet.html?planet=${encodeURIComponent(homeworld)}`;
+  const planetURL = `./planets/planet.html?planet=${encodeURIComponent(
+    homeworld
+  )}`;
   window.location.href = planetURL;
 }
 
-form.addEventListener('submit', function(event) {
-    event.preventDefault();
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
 
-    const searchInput = document.getElementById('searchInput').value;
+  const searchInput = document.getElementById("searchInput").value;
 
-    
-    fetch(`"http://swapi.dev/api/people?page=2"${encodeURIComponent(searchInput)}`)
-      .then(response => response.json())
-      .then(data => {
-        // Handle API response
-        console.log('API Response:', data);
-        // Display or process the retrieved character information
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-  });
+  fetch(
+    `"http://swapi.dev/api/people?page=2"${encodeURIComponent(searchInput)}`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      // Handle API response
+      console.log("API Response:", data);
+      // Display or process the retrieved character information
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+});
