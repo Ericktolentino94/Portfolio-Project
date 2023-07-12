@@ -42,18 +42,39 @@ function handlePlanetButtonClick(event) {
 form.addEventListener("submit", function (event) {
   event.preventDefault();
 
-  const searchInput = document.getElementById("searchInput").value;
+  const searchValue = searchInput.value;
 
-  fetch(
-    `"http://swapi.dev/api/people?page=2"${encodeURIComponent(searchInput)}`
-  )
+  const apiUrl = `https://swapi.dev/api/people/?search=${searchValue}`;
+  fetch(apiUrl)
     .then((response) => response.json())
     .then((data) => {
-      // Handle API response
-      console.log("API Response:", data);
-      // Display or process the retrieved character information
+      if (data.results && data.results.length > 0) {
+        const characters = data.results;
+
+        section.innerHTML = "";
+
+        characters.forEach((character) => {
+          section.innerHTML += `
+            <article class="card">
+              <h2>${character.name}</h2>
+              <p><strong>Birth Year: </strong>${character.birth_year}</p>
+              <p><strong>Hair Color: </strong>${character.hair_color}</p>
+              <button class="characterButton" value="${character.homeworld}">Character Home Planet</button>
+            </article>
+          `;
+        });
+
+        const planetButtons = document.querySelectorAll(".characterButton");
+        planetButtons.forEach((button) => {
+          button.addEventListener("click", handlePlanetButtonClick);
+        });
+      } else {
+        section.innerHTML = "<p>No characters found.</p>";
+      }
     })
     .catch((error) => {
       console.error("Error:", error);
     });
 });
+
+
