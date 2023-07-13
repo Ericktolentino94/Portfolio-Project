@@ -15,13 +15,15 @@ document.addEventListener("DOMContentLoaded", (e) => {
       const planetGravity = planet.gravity;
       const planetTerrain = planet.terrain;
 
-      const planetInfoHTML = `<h2>Planet: ${planetName}</h2>
+      const planetInfoHTML = `<article class=card>
+                                    <h2>Planet: ${planetName}</h2>
                                     <p> Population: ${planetPopulation}</p>
                                     <p> Planet Rotation: ${planetRotation}</p>
                                     <p> Orbital period: ${planetOrbital}</p>
                                     <p> Climate: ${planetClimate}</p>
                                     <p> Gravity: ${planetGravity}</p>
-                                    <p> Planet Terrain: ${planetTerrain}</p>`;
+                                    <p> Planet Terrain: ${planetTerrain}</p>
+                                    <article>`;
       planetInfo.innerHTML = planetInfoHTML;
     });
 });

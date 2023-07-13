@@ -69,12 +69,13 @@ form.addEventListener("submit", function (event) {
           button.addEventListener("click", handlePlanetButtonClick);
         });
       } else {
-        section.innerHTML = "<p>No characters found.</p>";
+        section.innerHTML = `<p class="errorMessage">No characters found.</p>`;
       }
     })
     .catch((error) => {
       console.error("Error:", error);
     });
 });
+
 
 

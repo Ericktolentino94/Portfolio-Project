@@ -27,6 +27,14 @@ form{
     color:white
 }
 
+.errorMessage {
+color:white
+}
+
+.characterButton:hover {
+color: red
+}
+
 .bg {
     background: url(https://i.ibb.co/87GbbFP/2799006.jpg) no-repeat;
     background-size: cover;
@@ -115,4 +123,14 @@ form{
 }
 .star-field .layer:nth-child(3) {
     animation: sf-fly-by-3 5s linear infinite;
+}
+
+@media (max-width:768px) {
+    body  {
+        display: grid;
+       grid-template-columns: 1fr 3fr;
+    }
+    form {
+        display: block;
+    }
 }
