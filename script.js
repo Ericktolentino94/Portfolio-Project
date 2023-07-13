@@ -1,4 +1,4 @@
-const url = "http://swapi.dev/api/people?page=2";
+const url = "http://swapi.dev/api/people?page=1";
 const section = document.querySelector("section");
 const searchInput = document.querySelector("#searchInput");
 const searchButton = document.querySelector("#searchButton");
@@ -12,13 +12,16 @@ window.addEventListener("DOMContentLoaded", function getData() {
 
       for (let i = 0; i < data.results.length; i++) {
         section.innerHTML += `
-          <article class="card">
-            <h2>${data.results[i].name}</h2>
-            <p><strong>Birth Year: </strong>${data.results[i].birth_year}</p>
-            <p><strong>Hair Color: </strong>${data.results[i].hair_color}</p>
-            <button class="characterButton" value="${data.results[i].homeworld}">Character Home Planet</button>
-          </article>
-        `;
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">${data.results[i].name}</h5>
+      <p class="card-text"><strong>Birth Year: </strong>${data.results[i].birth_year}</p>
+      <p class="card-text"><strong>Hair Color: </strong>${data.results[i].hair_color}</p>
+      <button class="btn btn-primary characterButton" value="${data.results[i].homeworld}">Character Home Planet</button>
+    </div>
+  </div>
+`;
+
       }
 
       const planetButtons = document.querySelectorAll(".characterButton");
@@ -54,14 +57,16 @@ form.addEventListener("submit", function (event) {
         section.innerHTML = "";
 
         characters.forEach((character) => {
-          section.innerHTML += `
-            <article class="card">
-              <h2>${character.name}</h2>
-              <p><strong>Birth Year: </strong>${character.birth_year}</p>
-              <p><strong>Hair Color: </strong>${character.hair_color}</p>
-              <button class="characterButton" value="${character.homeworld}">Character Home Planet</button>
-            </article>
-          `;
+          section.innerHTML = `
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">${character.name}</h5>
+              <p class="card-text"><strong>Birth Year: </strong>${character.birth_year}</p>
+              <p class="card-text"><strong>Hair Color: </strong>${character.hair_color}</p>
+              <button class="btn btn-primary characterButton" value="${character.homeworld}">Character Home Planet</button>
+            </div>
+          </div>
+        `;
         });
 
         const planetButtons = document.querySelectorAll(".characterButton");
@@ -76,6 +81,8 @@ form.addEventListener("submit", function (event) {
       console.error("Error:", error);
     });
 });
+
+
 
 
 

@@ -2,7 +2,7 @@ body {
     font-family: 'Inconsolata', monospace;
 }
 
-section {
+section.section {
     display: grid;
     grid-template-columns: repeat(3, 3fr);
 }
@@ -15,6 +15,7 @@ h1 {
 }
 
 section .card {
+    background-color: transparent;
     text-align: center;
     color:white;
     border-style: solid;
