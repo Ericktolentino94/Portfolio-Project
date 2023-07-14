@@ -5,6 +5,7 @@ body {
 section.section {
     display: grid;
     grid-template-columns: repeat(3, 3fr);
+    padding-left: 220px;
 }
 
 h1 {
@@ -15,6 +16,7 @@ h1 {
 }
 
 section .card {
+    
     background-color: transparent;
     text-align: center;
     color:white;
@@ -25,6 +27,7 @@ section .card {
 }
 
 form{ 
+    padding-left: 80px;
     color:white
 }
 
@@ -32,7 +35,7 @@ form{
 color:white
 }
 
-.characterButton:hover {
+div.card:hover {
 color: red
 }
 
