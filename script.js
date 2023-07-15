@@ -54,10 +54,10 @@ form.addEventListener("submit", function (event) {
       if (data.results && data.results.length > 0) {
         const characters = data.results;
 
-        section.innerHTML = "";
+      
 
         characters.forEach((character) => {
-          section.innerHTML = `
+          section.innerHTML += `
           <div class="card" style="width: 18rem;">
             <div class="card-body">
               <h5 class="card-title">${character.name}</h5>
